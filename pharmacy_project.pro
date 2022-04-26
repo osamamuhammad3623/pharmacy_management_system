@@ -21,6 +21,8 @@ HEADERS += \
     add_medicine_window.h \
     admin_panel.h \
     mainwindow.h \
+    medicine_class.h \
+    pharmacist_class.h \
     pharmacist_window.h
 
 FORMS += \

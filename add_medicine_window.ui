@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
      <x>870</x>
@@ -42,7 +42,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
@@ -60,7 +60,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
@@ -78,14 +78,14 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
     <string>Supplier Company</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_2">
+  <widget class="QSpinBox" name="md_sell_price">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -93,6 +93,11 @@
      <width>101</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="minimum">
     <number>1</number>
@@ -112,7 +117,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
@@ -123,7 +128,7 @@
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>10</y>
+     <y>0</y>
      <width>331</width>
      <height>51</height>
     </rect>
@@ -151,14 +156,14 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
     <string>Sell price</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="md_category">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -169,11 +174,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_4">
+  <widget class="QSpinBox" name="md_id">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -182,6 +187,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="minimum">
     <number>1</number>
    </property>
@@ -189,7 +199,7 @@
     <number>200</number>
    </property>
   </widget>
-  <widget class="QTextEdit" name="username_3">
+  <widget class="QTextEdit" name="md_supplier_company">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -197,6 +207,11 @@
      <width>241</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -210,14 +225,14 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
     <string>Quantity</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="username_2">
+  <widget class="QTextEdit" name="md_name">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -225,6 +240,11 @@
      <width>241</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLabel" name="label_10">
@@ -238,7 +258,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
@@ -263,7 +283,7 @@
     <string>Add</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="check_shortage">
    <property name="geometry">
     <rect>
      <x>580</x>
@@ -281,7 +301,7 @@
     <string>Check for shortage medicine</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_5">
+  <widget class="QSpinBox" name="max_quantity">
    <property name="geometry">
     <rect>
      <x>800</x>
@@ -290,6 +310,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="minimum">
     <number>1</number>
    </property>
@@ -297,7 +322,7 @@
     <number>200</number>
    </property>
   </widget>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QTableWidget" name="shortage_table">
    <property name="geometry">
     <rect>
      <x>580</x>
@@ -307,7 +332,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="md_buy_price">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -315,6 +340,11 @@
      <width>101</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="minimum">
     <number>1</number>
@@ -334,7 +364,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
@@ -362,7 +392,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_3">
+  <widget class="QSpinBox" name="md_quantity">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -370,6 +400,11 @@
      <width>101</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="minimum">
     <number>1</number>

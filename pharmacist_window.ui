@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>774</width>
-    <height>685</height>
+    <width>835</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>210</y>
+     <x>60</x>
+     <y>250</y>
      <width>91</width>
      <height>31</height>
     </rect>
@@ -31,10 +31,10 @@
     <string>Quantity</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="logout">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>670</x>
      <y>30</y>
      <width>101</width>
      <height>31</height>
@@ -49,14 +49,19 @@
     <string>Logout</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_2">
+  <widget class="QSpinBox" name="md_quantity">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>210</y>
+     <x>200</x>
+     <y>250</y>
      <width>101</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="minimum">
     <number>1</number>
@@ -65,21 +70,26 @@
     <number>200</number>
    </property>
   </widget>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QTableWidget" name="total_table">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>100</y>
+     <x>340</x>
+     <y>140</y>
      <width>431</width>
      <height>491</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>20</y>
+     <x>190</x>
+     <y>30</y>
      <width>141</width>
      <height>31</height>
     </rect>
@@ -93,14 +103,19 @@
     <string>name</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="md_id">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>160</y>
+     <x>200</x>
+     <y>200</y>
      <width>101</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="minimum">
     <number>1</number>
@@ -112,8 +127,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>90</y>
+     <x>30</x>
+     <y>130</y>
      <width>221</width>
      <height>31</height>
     </rect>
@@ -127,11 +142,11 @@
     <string>Insert a record</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="check">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>270</y>
+     <x>180</x>
+     <y>310</y>
      <width>121</width>
      <height>31</height>
     </rect>
@@ -148,8 +163,8 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>20</y>
+     <x>30</x>
+     <y>30</y>
      <width>141</width>
      <height>31</height>
     </rect>
@@ -166,8 +181,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>160</y>
+     <x>60</x>
+     <y>200</y>
      <width>91</width>
      <height>31</height>
     </rect>
@@ -181,11 +196,11 @@
     <string>Medicine ID</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="clear_table">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>600</y>
+     <x>650</x>
+     <y>640</y>
      <width>121</width>
      <height>31</height>
     </rect>
@@ -199,11 +214,11 @@
     <string>Clear table</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="print">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>600</y>
+     <x>510</x>
+     <y>640</y>
      <width>121</width>
      <height>31</height>
     </rect>

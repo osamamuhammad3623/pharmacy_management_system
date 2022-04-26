@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>717</width>
-    <height>503</height>
+    <height>455</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="add_employees">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -35,7 +35,7 @@
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>50</y>
+     <y>40</y>
      <width>221</width>
      <height>31</height>
     </rect>
@@ -52,11 +52,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="generate_reports">
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>290</y>
+     <y>280</y>
      <width>301</width>
      <height>51</height>
     </rect>
@@ -70,11 +70,11 @@
     <string>Generate Report</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="logout">
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>400</y>
+     <y>380</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -88,7 +88,7 @@
     <string>Logout</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="md_stock">
    <property name="geometry">
     <rect>
      <x>200</x>

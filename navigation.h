@@ -7,15 +7,14 @@
 #include "mainwindow.h"
 #include "pharmacist_window.h"
 
+typedef enum{
+    Employees_Window, Medicine_Stock_Window, Admin_Panel_Window, Pharmacist_Window, Login_Window
+}Window_Type;
 
-void launch_employees_window();
-
-void launch_medicine_window();
-
-void launch_admin_window();
-
-void launch_pharmacist_window();
-
-void launch_login_window();
+/*
+Description: A function to launch a new UI window and hide current active window
+               inputs: Window type to be launched, and a pointer to current active window
+*/
+void launch_new_window(Window_Type type, QWidget* current_window);
 
 #endif // NAVIGATION_H

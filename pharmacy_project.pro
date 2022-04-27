@@ -14,6 +14,7 @@ SOURCES += \
     admin_panel.cpp \
     main.cpp \
     mainwindow.cpp \
+    navigation.cpp \
     pharmacist_window.cpp
 
 HEADERS += \
@@ -22,6 +23,7 @@ HEADERS += \
     admin_panel.h \
     mainwindow.h \
     medicine_class.h \
+    navigation.h \
     pharmacist_class.h \
     pharmacist_window.h
 

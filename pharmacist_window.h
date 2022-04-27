@@ -15,6 +15,9 @@ public:
     explicit pharmacist_window(QWidget *parent = nullptr);
     ~pharmacist_window();
 
+private slots:
+    void on_logout_clicked();
+
 private:
     Ui::pharmacist_window *ui;
 };

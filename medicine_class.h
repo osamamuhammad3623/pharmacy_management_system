@@ -1,6 +1,6 @@
 #ifndef MEDICINE_CLASS_H
 #define MEDICINE_CLASS_H
-#include <iostream>
+#include <QString>
 using namespace std;
 
 class Medicine{
@@ -9,9 +9,9 @@ public:
     int quantity;
     int buy_price;
     int sell_price;
-    string name;
-    string supplier_company;
-    string category;
+    QString name;
+    QString supplier_company;
+    QString category;
 };
 
 #endif // MEDICINE_CLASS_H

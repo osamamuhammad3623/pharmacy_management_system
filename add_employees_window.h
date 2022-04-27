@@ -15,6 +15,11 @@ public:
     explicit add_employees_window(QWidget *parent = nullptr);
     ~add_employees_window();
 
+private slots:
+    void on_add_pharmacist_clicked();
+
+    void on_back_clicked();
+
 private:
     Ui::add_employees_window *ui;
 };

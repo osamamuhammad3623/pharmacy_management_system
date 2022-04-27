@@ -1,4 +1,5 @@
 #include "pharmacist_window.h"
+#include "navigation.h"
 #include "ui_pharmacist_window.h"
 
 pharmacist_window::pharmacist_window(QWidget *parent) :
@@ -12,3 +13,10 @@ pharmacist_window::~pharmacist_window()
 {
     delete ui;
 }
+
+void pharmacist_window::on_logout_clicked()
+{
+    launch_login_window();
+    this->hide();
+}
+

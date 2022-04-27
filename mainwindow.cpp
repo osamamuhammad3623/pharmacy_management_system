@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "admin_panel.h"
+#include "navigation.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,8 +17,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_login_clicked()
 {
-    admin_panel *admin_window = new admin_panel();
-    admin_window->show();
+    QString user = ui->username->toPlainText();
+    if (user == "osama"){
+        launch_admin_window();
+    }else{
+        launch_pharmacist_window();
+    }
     this->hide();
+
 }
 

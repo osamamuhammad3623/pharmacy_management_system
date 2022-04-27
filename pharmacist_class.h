@@ -1,12 +1,12 @@
 #ifndef PHARMACIST_CLASS_H
 #define PHARMACIST_CLASS_H
-#include <iostream>
+#include <QString>
 using namespace std;
 
 class Pharmacist{
 public:
-    string name;
-    string password;
+    QString name;
+    QString password;
     int salary;
 };
 

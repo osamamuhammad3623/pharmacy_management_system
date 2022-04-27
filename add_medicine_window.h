@@ -15,6 +15,11 @@ public:
     explicit add_medicine_window(QWidget *parent = nullptr);
     ~add_medicine_window();
 
+private slots:
+    void on_back_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::add_medicine_window *ui;
 };

@@ -12,6 +12,7 @@ public:
     QString name;
     QString supplier_company;
     QString category;
+    bool is_alternative;
 };
 
 #endif // MEDICINE_CLASS_H

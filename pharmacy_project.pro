@@ -25,7 +25,8 @@ HEADERS += \
     medicine_class.h \
     navigation.h \
     pharmacist_class.h \
-    pharmacist_window.h
+    pharmacist_window.h \
+    supplier_class.h
 
 FORMS += \
     add_employees_window.ui \

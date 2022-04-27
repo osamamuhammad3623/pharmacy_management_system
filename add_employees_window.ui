@@ -35,7 +35,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>250</y>
+     <y>380</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -53,7 +53,7 @@
    <property name="geometry">
     <rect>
      <x>370</x>
-     <y>310</y>
+     <y>440</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -71,8 +71,8 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>150</y>
-     <width>141</width>
+     <y>190</y>
+     <width>191</width>
      <height>31</height>
     </rect>
    </property>
@@ -82,7 +82,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Pharmacist name</string>
+    <string>Pharmacist first name</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="pharmacist_table">
@@ -100,11 +100,11 @@
     </font>
    </property>
   </widget>
-  <widget class="QTextEdit" name="pharmacist_name">
+  <widget class="QTextEdit" name="pharmacist_fname">
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>150</y>
+     <y>190</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -155,7 +155,7 @@
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>250</y>
+     <y>380</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -197,7 +197,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>200</y>
+     <y>330</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -208,7 +208,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Pharmacist password</string>
+    <string>password</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -233,7 +233,7 @@
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>200</y>
+     <y>330</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -263,6 +263,114 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="pharmacist_lname">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>230</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>230</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Pharmacist last name</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="pharmacist_username">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>280</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>280</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>username</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>150</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Pharmacist ID</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="pharmacist_salary_2">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>150</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="minimum">
+    <number>0</number>
+   </property>
+   <property name="maximum">
+    <number>5000</number>
+   </property>
+   <property name="value">
+    <number>0</number>
    </property>
   </widget>
  </widget>

@@ -19,11 +19,10 @@ void MainWindow::on_login_clicked()
 {
     QString user = ui->username->toPlainText();
     if (user == "osama"){
-        launch_admin_window();
+        launch_new_window(Admin_Panel_Window, this);
     }else{
-        launch_pharmacist_window();
+        launch_new_window(Pharmacist_Window, this);
     }
-    this->hide();
 
 }
 

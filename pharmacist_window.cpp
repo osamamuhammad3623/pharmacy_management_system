@@ -16,7 +16,6 @@ pharmacist_window::~pharmacist_window()
 
 void pharmacist_window::on_logout_clicked()
 {
-    launch_login_window();
-    this->hide();
+    launch_new_window(Login_Window, this);
 }
 

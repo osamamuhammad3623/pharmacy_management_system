@@ -33,8 +33,6 @@ void add_employees_window::on_add_pharmacist_clicked()
 
 void add_employees_window::on_back_clicked()
 {
-    /* display admin panel window and hide current window */
-    launch_admin_window();
-    this->hide();
+    launch_new_window(Admin_Panel_Window, this);
 }
 

@@ -18,9 +18,7 @@ add_medicine_window::~add_medicine_window()
 
 void add_medicine_window::on_back_clicked()
 {
-    /* display admin panel window and hide current window */
-    launch_admin_window();
-    this->hide();
+    launch_new_window(Admin_Panel_Window, this);
 }
 
 

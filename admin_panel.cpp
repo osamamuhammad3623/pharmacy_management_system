@@ -16,22 +16,16 @@ admin_panel::~admin_panel()
 
 void admin_panel::on_add_employees_clicked()
 {
-    /* display admin panel window and hide current window */
-    launch_employees_window();
-    this->hide();
+    launch_new_window(Employees_Window, this);
 }
 
 void admin_panel::on_md_stock_clicked()
 {
-    /* display admin panel window and hide current window */
-    launch_medicine_window();
-    this->hide();
+    launch_new_window(Medicine_Stock_Window, this);
 }
-
 
 void admin_panel::on_logout_clicked()
 {
-    launch_login_window();
-    this->hide();
+    launch_new_window(Login_Window, this);
 }
 

@@ -18,15 +18,15 @@ SOURCES += \
     pharmacist_window.cpp
 
 HEADERS += \
+    Employee_class.h \
     add_employees_window.h \
     add_medicine_window.h \
     admin_panel.h \
     mainwindow.h \
-    medicine_class.h \
     navigation.h \
-    pharmacist_class.h \
     pharmacist_window.h \
-    supplier_class.h
+    Supplier_class.h \
+    Medicine_class.h
 
 FORMS += \
     add_employees_window.ui \

@@ -1,7 +1,9 @@
 #include "add_employees_window.h"
-#include "pharmacist_class.h"
+#include "Employee_class.h"
 #include "navigation.h"
 #include "ui_add_employees_window.h"
+#include <iostream>
+using namespace std;
 
 add_employees_window::add_employees_window(QWidget *parent) :
     QWidget(parent),
@@ -17,17 +19,24 @@ add_employees_window::~add_employees_window()
 
 void add_employees_window::on_add_pharmacist_clicked()
 {
-    Pharmacist new_pharmacist;
-    new_pharmacist.name = ui->pharmacist_name->toPlainText();
-    new_pharmacist.password = ui->pharmacist_password->toPlainText();
-    new_pharmacist.salary = ui->pharmacist_salary->value();
+    Employee new_emp;
+    new_emp.fname =  ui->emp_fname->toPlainText().toStdString();
+    new_emp.lname =  ui->emp_lname->toPlainText().toStdString();
+    new_emp.username =  ui->emp_username->toPlainText().toStdString();
+    new_emp.password = ui->emp_password->toPlainText().toStdString();
+    new_emp.salary = ui->emp_salary->value();
+    if (ui->is_ph->isChecked()){
+        new_emp.is_pharmacist=Pharmacist;
+    }
 
-    //insert_pharmacist(new_pharmacist);
+    //insert_pharmacist(new_emp);
 
     /* clear fields after insertion */
-    ui->pharmacist_name->setText("");
-    ui->pharmacist_password->setText("");
-    ui->pharmacist_salary->setValue(0);
+    ui->emp_fname->setText("");
+    ui->emp_lname->setText("");
+    ui->emp_username->setText("");
+    ui->emp_password->setText("");
+    ui->emp_salary->setValue(0);
 }
 
 

@@ -18,6 +18,8 @@ public:
 private slots:
     void on_logout_clicked();
 
+    void on_check_clicked();
+
 private:
     Ui::pharmacist_window *ui;
 };

@@ -19,3 +19,9 @@ void pharmacist_window::on_logout_clicked()
     launch_new_window(Login_Window, this);
 }
 
+
+void pharmacist_window::on_check_clicked()
+{
+    //check_medicine
+}
+

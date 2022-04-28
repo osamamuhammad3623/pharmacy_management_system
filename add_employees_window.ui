@@ -34,7 +34,7 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>380</y>
      <width>171</width>
      <height>31</height>
@@ -46,14 +46,14 @@
     </font>
    </property>
    <property name="text">
-    <string>Pharmacist salary</string>
+    <string>Salary</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="add_pharmacist">
+  <widget class="QPushButton" name="add_emp">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>440</y>
+     <x>350</x>
+     <y>460</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -70,7 +70,7 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>190</y>
      <width>191</width>
      <height>31</height>
@@ -82,7 +82,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Pharmacist first name</string>
+    <string>First name</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="pharmacist_table">
@@ -100,10 +100,10 @@
     </font>
    </property>
   </widget>
-  <widget class="QTextEdit" name="pharmacist_fname">
+  <widget class="QTextEdit" name="emp_fname">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>280</x>
      <y>190</y>
      <width>171</width>
      <height>31</height>
@@ -151,10 +151,10 @@
     <string>Remove Selected</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="pharmacist_salary">
+  <widget class="QSpinBox" name="emp_salary">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>280</x>
      <y>380</y>
      <width>171</width>
      <height>31</height>
@@ -196,7 +196,7 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>330</y>
      <width>171</width>
      <height>31</height>
@@ -214,7 +214,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>20</x>
      <y>100</y>
      <width>221</width>
      <height>31</height>
@@ -226,13 +226,13 @@
     </font>
    </property>
    <property name="text">
-    <string>Insert a pharmacist</string>
+    <string>Insert an employee</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="pharmacist_password">
+  <widget class="QTextEdit" name="emp_password">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>280</x>
      <y>330</y>
      <width>171</width>
      <height>31</height>
@@ -265,10 +265,10 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QTextEdit" name="pharmacist_lname">
+  <widget class="QTextEdit" name="emp_lname">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>280</x>
      <y>230</y>
      <width>171</width>
      <height>31</height>
@@ -283,7 +283,7 @@
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>230</y>
      <width>171</width>
      <height>31</height>
@@ -295,13 +295,13 @@
     </font>
    </property>
    <property name="text">
-    <string>Pharmacist last name</string>
+    <string>Last name</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="pharmacist_username">
+  <widget class="QTextEdit" name="emp_username">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>280</x>
      <y>280</y>
      <width>171</width>
      <height>31</height>
@@ -316,7 +316,7 @@
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>280</y>
      <width>141</width>
      <height>31</height>
@@ -334,7 +334,7 @@
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>70</x>
      <y>150</y>
      <width>191</width>
      <height>31</height>
@@ -346,13 +346,13 @@
     </font>
    </property>
    <property name="text">
-    <string>Pharmacist ID</string>
+    <string>ID</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="pharmacist_salary_2">
+  <widget class="QSpinBox" name="emp_id">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>280</x>
      <y>150</y>
      <width>171</width>
      <height>31</height>
@@ -371,6 +371,24 @@
    </property>
    <property name="value">
     <number>0</number>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="is_ph">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>430</y>
+     <width>211</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Pharmacist</string>
    </property>
   </widget>
  </widget>

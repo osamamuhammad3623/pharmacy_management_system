@@ -398,7 +398,7 @@
     <number>200</number>
    </property>
   </widget>
-  <widget class="QComboBox" name="md_category_2">
+  <widget class="QComboBox" name="md_suppliers">
    <property name="geometry">
     <rect>
      <x>210</x>

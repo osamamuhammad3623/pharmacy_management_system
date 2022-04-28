@@ -37,7 +37,7 @@ void Medicine_Window::on_add_medicine_clicked()
     md.id = ui->md_id->value();
     md.name = ui->md_name->toPlainText().toStdString();
     md.quantity = ui->md_quantity->value();
-    md.buy_price = ui->md_buy_price->value();
+    md.purchase_price = ui->md_buy_price->value();
     md.sell_price = ui->md_sell_price->value();
     md.category = ui->md_category->currentText().toStdString();
     md.supplier_company = ui->md_suppliers->currentText().toStdString();

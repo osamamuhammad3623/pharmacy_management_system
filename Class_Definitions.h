@@ -20,8 +20,8 @@ class Medicine{
 public:
     string id;
     int quantity;
-    int buy_price;
-    int sell_price;
+    double purchase_price;
+    double sell_price;
     string name;
     string supplier_company;
     string category;

@@ -1,62 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>admin_panel</class>
- <widget class="QWidget" name="admin_panel">
+ <class>Admin_Panel</class>
+ <widget class="QWidget" name="Admin_Panel">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
-    <height>455</height>
+    <width>465</width>
+    <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="add_employees">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>120</y>
-     <width>301</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Add Employees</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>40</y>
-     <width>221</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>17</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Admin Panel</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QPushButton" name="generate_reports">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>280</y>
+     <x>80</x>
+     <y>260</y>
      <width>301</width>
      <height>51</height>
     </rect>
@@ -73,8 +34,8 @@
   <widget class="QPushButton" name="logout">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>380</y>
+     <x>180</x>
+     <y>360</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -91,8 +52,8 @@
   <widget class="QPushButton" name="md_stock">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>200</y>
+     <x>80</x>
+     <y>180</y>
      <width>301</width>
      <height>51</height>
     </rect>
@@ -104,6 +65,45 @@
    </property>
    <property name="text">
     <string>Medicine stock</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="add_employees">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>100</y>
+     <width>301</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Add Employees</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>20</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Admin Panel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

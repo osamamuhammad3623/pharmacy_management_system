@@ -3,30 +3,30 @@
 
 void launch_new_window(Window_Type type, QWidget* current_window){
     switch(type){
-        case Employees_Window:{
-            add_employees_window *emp_window = new add_employees_window();
+        case GUI_Employees_Window:{
+            Employee_Window *emp_window = new Employee_Window();
             emp_window->show();
             break;
             }
-        case Medicine_Stock_Window:{
-            add_medicine_window *medicine_window = new add_medicine_window();
+        case GUI_Medicine_Stock_Window:{
+            Medicine_Window *medicine_window = new Medicine_Window();
             medicine_window->show();
             break;
         }
 
-        case Admin_Panel_Window:{
-            admin_panel *admin_window = new admin_panel();
+        case GUI_Admin_Panel_Window:{
+            Admin_Panel *admin_window = new Admin_Panel();
             admin_window->show();
             break;
         }
 
-        case Pharmacist_Window:{
-            pharmacist_window *ph_window = new pharmacist_window();
+        case GUI_Pharmacist_Window:{
+            Pharmacist_Window *ph_window = new Pharmacist_Window();
             ph_window->show();
             break;
         }
 
-        case Login_Window:{
+        case GUI_Login_Window:{
             MainWindow *main_window = new MainWindow;
             main_window->show();
             break;

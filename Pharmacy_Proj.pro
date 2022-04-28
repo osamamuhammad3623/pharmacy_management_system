@@ -9,30 +9,28 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    add_employees_window.cpp \
-    add_medicine_window.cpp \
     admin_panel.cpp \
+    employee_window.cpp \
     main.cpp \
     mainwindow.cpp \
+    medicine_window.cpp \
     navigation.cpp \
     pharmacist_window.cpp
 
 HEADERS += \
-    Employee_class.h \
-    add_employees_window.h \
-    add_medicine_window.h \
+    Class_Definitions.h \
     admin_panel.h \
+    employee_window.h \
     mainwindow.h \
+    medicine_window.h \
     navigation.h \
-    pharmacist_window.h \
-    Supplier_class.h \
-    Medicine_class.h
+    pharmacist_window.h
 
 FORMS += \
-    add_employees_window.ui \
-    add_medicine_window.ui \
     admin_panel.ui \
+    employee_window.ui \
     mainwindow.ui \
+    medicine_window.ui \
     pharmacist_window.ui
 
 # Default rules for deployment.

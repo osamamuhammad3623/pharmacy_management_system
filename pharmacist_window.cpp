@@ -2,26 +2,26 @@
 #include "navigation.h"
 #include "ui_pharmacist_window.h"
 
-pharmacist_window::pharmacist_window(QWidget *parent) :
+Pharmacist_Window::Pharmacist_Window(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::pharmacist_window)
+    ui(new Ui::Pharmacist_Window)
 {
     ui->setupUi(this);
 }
 
-pharmacist_window::~pharmacist_window()
+Pharmacist_Window::~Pharmacist_Window()
 {
     delete ui;
 }
 
-void pharmacist_window::on_logout_clicked()
+void Pharmacist_Window::on_check_clicked()
 {
-    launch_new_window(Login_Window, this);
+
 }
 
 
-void pharmacist_window::on_check_clicked()
+void Pharmacist_Window::on_logout_clicked()
 {
-    //check_medicine
+    launch_new_window(GUI_Login_Window, this);
 }
 

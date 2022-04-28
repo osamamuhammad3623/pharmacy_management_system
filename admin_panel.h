@@ -4,26 +4,26 @@
 #include <QWidget>
 
 namespace Ui {
-class admin_panel;
+class Admin_Panel;
 }
 
-class admin_panel : public QWidget
+class Admin_Panel : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit admin_panel(QWidget *parent = nullptr);
-    ~admin_panel();
+    explicit Admin_Panel(QWidget *parent = nullptr);
+    ~Admin_Panel();
 
 private slots:
+    void on_logout_clicked();
+
     void on_add_employees_clicked();
 
     void on_md_stock_clicked();
 
-    void on_logout_clicked();
-
 private:
-    Ui::admin_panel *ui;
+    Ui::Admin_Panel *ui;
 };
 
 #endif // ADMIN_PANEL_H

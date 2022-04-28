@@ -22,12 +22,12 @@ void Admin_Panel::on_logout_clicked()
 
 void Admin_Panel::on_add_employees_clicked()
 {
-
+    launch_new_window(GUI_Employees_Window, this);
 }
 
 
 void Admin_Panel::on_md_stock_clicked()
 {
-
+    launch_new_window(GUI_Medicine_Stock_Window, this);
 }
 

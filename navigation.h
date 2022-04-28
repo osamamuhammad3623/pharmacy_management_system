@@ -1,11 +1,12 @@
 #ifndef NAVIGATION_H
 #define NAVIGATION_H
 
-#include "employee_window.h"
-#include "medicine_window.h"
-#include "admin_panel.h"
+#include "employee_window/employee_window.h"
+#include "medicine_window/medicine_window.h"
+#include "admin_panel/admin_panel.h"
 #include "mainwindow.h"
-#include "pharmacist_window.h"
+#include "pharmacist_window/pharmacist_window.h"
+#include "Class_Definitions.h"
 
 typedef enum{
     GUI_Employees_Window, GUI_Medicine_Stock_Window,

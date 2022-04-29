@@ -337,6 +337,21 @@
      <height>501</height>
     </rect>
    </property>
+   <column>
+    <property name="text">
+     <string>ID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Quantity</string>
+    </property>
+   </column>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">

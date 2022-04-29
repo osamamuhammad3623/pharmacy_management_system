@@ -282,6 +282,27 @@
      <pointsize>10</pointsize>
     </font>
    </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
+   <property name="selectionBehavior">
+    <enum>QAbstractItemView::SelectRows</enum>
+   </property>
+   <column>
+    <property name="text">
+     <string>ID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>First name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Last name</string>
+    </property>
+   </column>
   </widget>
   <widget class="QPushButton" name="back">
    <property name="geometry">

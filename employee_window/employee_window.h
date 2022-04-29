@@ -20,6 +20,10 @@ private slots:
 
     void on_back_clicked();
 
+    void on_refresh_pharmacist_table_clicked();
+
+    void on_remove_selected_row_clicked();
+
 private:
     Ui::Employee_Window *ui;
 };

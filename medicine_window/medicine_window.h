@@ -22,6 +22,8 @@ private slots:
 
     void on_add_medicine_clicked();
 
+    void on_add_sup_clicked();
+
 private:
     Ui::Medicine_Window *ui;
 };

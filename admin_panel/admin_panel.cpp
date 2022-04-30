@@ -1,6 +1,6 @@
 #include "admin_panel.h"
 #include "ui_admin_panel.h"
-#include "navigation.h"
+#include "api.h"
 
 Admin_Panel::Admin_Panel(QWidget *parent) :
     QWidget(parent),

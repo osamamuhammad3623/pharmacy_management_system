@@ -1,5 +1,6 @@
 #include "mainwindow.h"
-#include "navigation.h"
+#include "api.h"
+#include "QDebug"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -17,10 +18,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_login_clicked()
 {
-    if (ui->username->toPlainText() == "osama"){
+    int result = is_admin(ui->username->toPlainText().toStdString(), ui->password->toPlainText().toStdString());
+    if (result == 1){
         launch_new_window(GUI_Admin_Panel_Window, this);
-    }else{
+    }else if (result == 0){
         launch_new_window(GUI_Pharmacist_Window, this);
+    }else{
+        ui->msg->setText("Username is not found!");
     }
 }
 

@@ -61,3 +61,27 @@ void Medicine_Window::on_add_medicine_clicked()
     ui->md_name->setText("");
 }
 
+
+void Medicine_Window::on_add_sup_clicked()
+{
+    Supplier sup;
+    sup.id = to_string(ui->sup_id->value());
+    sup.name = ui->sup_name->toPlainText().toStdString();
+    sup.address = ui->sup_address->toPlainText().toStdString();
+    sup.phone = ui->sup_phone->toPlainText().toStdString();
+
+    insert_supplier(sup);
+
+    /* clear fields after insertion */
+    ui->sup_id->setValue(0);
+    ui->sup_name->setText("");
+    ui->sup_address->setText("");
+    ui->sup_phone->setText("");
+
+    /* add supplier names to Supplier combo-box */
+    vector<Supplier> suppliers = get_suppliers();
+    for (int i=0; i< suppliers.size();i++){
+        ui->md_suppliers->addItem(QString::fromStdString(suppliers[i].name));
+    }
+}
+

@@ -24,6 +24,10 @@ private slots:
 
     void on_remove_selected_row_clicked();
 
+    void on_edit_ph_clicked();
+
+    void clear_insertion_fields();
+
 private:
     Ui::Employee_Window *ui;
 };

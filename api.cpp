@@ -221,3 +221,60 @@ int is_admin(string user_name, string pass)
          is_admin = sqlite3_column_int(stmt, 0);
     return is_admin;
 }
+
+
+vector<Medicine> Medicine_available(string id, int quantity) {
+    vector<Medicine> v;
+    int x;
+    const unsigned char* c;
+    string str;
+    int result = 0;
+    sqlite3_stmt* stmt;
+    result = sqlite3_open("Pharmacy.db", &db);
+
+        string query = "SELECT Quantity,Category FROM MEDICINE WHERE ID = '" + id + "'";
+        result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
+        sqlite3_step(stmt);
+        x = sqlite3_column_int(stmt, 0);
+        c = sqlite3_column_text(stmt, 1);
+        str = std::string(reinterpret_cast<const char*>(c));
+        if (x < quantity) {
+
+            string query = "SELECT ID,Name,Quantity,Sell FROM MEDICINE WHERE Category = '" + str + "' AND Quantity !=0";
+            result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
+            Medicine m;
+
+                  while (result = sqlite3_step(stmt) == SQLITE_ROW) {
+
+                      m.id = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
+                      m.name= std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
+                      m.quantity = sqlite3_column_int(stmt, 2);
+                      m.sell_price= sqlite3_column_double(stmt, 3);
+                      m.is_alternative = true;
+
+                      v.push_back(m);
+
+                }
+                  return v;
+            }
+
+
+        else {
+            char* err;
+            Medicine m;
+            int price = 0;
+            string name;
+            string query = "SELECT ID,Name ,Sell FROM MEDICINE WHERE ID ='" + id + "'";
+            result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
+            sqlite3_step(stmt);
+            m.id = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
+            m.name = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
+            m.sell_price = sqlite3_column_int(stmt, 2);
+            m.is_alternative = false;
+            v.push_back(m);
+            string q = "UPDATE MEDICINE SET Quantity = Quantity -" + to_string(quantity) + " WHERE ID = '" + id + "'";
+            result = sqlite3_exec(db, q.c_str(), NULL, 0, &err);
+            return v;
+
+        }
+    }

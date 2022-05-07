@@ -22,7 +22,11 @@ private slots:
 
     void on_add_medicine_clicked();
 
-    void on_add_sup_clicked();
+    void on_check_availability_clicked();
+
+    void on_show_all_stock_clicked();
+
+    void on_remove_selected_clicked();
 
 private:
     Ui::Medicine_Window *ui;

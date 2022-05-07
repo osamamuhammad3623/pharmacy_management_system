@@ -18,7 +18,8 @@ SOURCES += \
     navigation.cpp \
     pharmacist_window/pharmacist_window.cpp \
     db/shell.c \
-    db/sqlite3.c
+    db/sqlite3.c \
+    supplier_window/supplier_window.cpp
 
 HEADERS += \
     Class_Definitions.h \
@@ -30,14 +31,16 @@ HEADERS += \
     navigation.h \
     pharmacist_window/pharmacist_window.h \
     db/sqlite3.h \
-    db/sqlite3ext.h
+    db/sqlite3ext.h \
+    supplier_window/supplier_window.h
 
 FORMS += \
     admin_panel/admin_panel.ui \
     employee_window/employee_window.ui \
     mainwindow.ui \
     medicine_window/medicine_window.ui \
-    pharmacist_window/pharmacist_window.ui
+    pharmacist_window/pharmacist_window.ui \
+    supplier_window/supplier_window.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

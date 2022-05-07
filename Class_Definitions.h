@@ -31,10 +31,10 @@ public:
 
 class Supplier{
 public:
-    string name;
-    string address;
-    string phone;
     string id;
+    string name;
+    string phone;
+    string address;
 };
 
 

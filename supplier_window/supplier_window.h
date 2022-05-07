@@ -15,6 +15,17 @@ public:
     explicit supplier_window(QWidget *parent = nullptr);
     ~supplier_window();
 
+private slots:
+    void on_add_sup_clicked();
+
+    void on_refresh_clicked();
+
+    void on_remove_selected_row_clicked();
+
+    void on_edit_clicked();
+
+    void on_back_clicked();
+
 private:
     Ui::supplier_window *ui;
 };

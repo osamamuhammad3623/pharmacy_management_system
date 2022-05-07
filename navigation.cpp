@@ -1,5 +1,6 @@
 #include "navigation.h"
 
+string g_pharmacist_name;
 
 void launch_new_window(Window_Type type, QWidget* current_window){
     switch(type){
@@ -7,7 +8,7 @@ void launch_new_window(Window_Type type, QWidget* current_window){
             Employee_Window *emp_window = new Employee_Window();
             emp_window->show();
             break;
-            }
+        }
         case GUI_Medicine_Stock_Window:{
             Medicine_Window *medicine_window = new Medicine_Window();
             medicine_window->show();
@@ -31,6 +32,12 @@ void launch_new_window(Window_Type type, QWidget* current_window){
             main_window->show();
             break;
         }
+
+        case GUI_Supplier_Window:{
+            supplier_window *main_window = new supplier_window();
+            main_window->show();
+            break;
+    }
     }
 
     current_window->hide();

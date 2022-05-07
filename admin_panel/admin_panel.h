@@ -22,6 +22,16 @@ private slots:
 
     void on_md_stock_clicked();
 
+    void on_manage_users_clicked();
+
+    void on_manage_suppliers_clicked();
+
+    void on_manage_med_clicked();
+
+    void on_add_medicine_clicked();
+
+    void on_add_medicine_2_clicked();
+
 private:
     Ui::Admin_Panel *ui;
 };

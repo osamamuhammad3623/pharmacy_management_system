@@ -1,5 +1,6 @@
 #include "medicine_window.h"
 #include "ui_medicine_window.h"
+#include "QMessageBox"
 #include "api.h"
 
 Medicine_Window::Medicine_Window(QWidget *parent) :
@@ -7,6 +8,7 @@ Medicine_Window::Medicine_Window(QWidget *parent) :
     ui(new Ui::Medicine_Window)
 {
     ui->setupUi(this);
+    on_show_all_stock_clicked();
     /* add supplier names to Supplier combo-box */
     vector<Supplier> suppliers = get_suppliers();
     for (int i=0; i< suppliers.size();i++){
@@ -62,26 +64,24 @@ void Medicine_Window::on_add_medicine_clicked()
 }
 
 
-void Medicine_Window::on_add_sup_clicked()
+void Medicine_Window::on_check_availability_clicked()
 {
-    Supplier sup;
-    sup.id = to_string(ui->sup_id->value());
-    sup.name = ui->sup_name->toPlainText().toStdString();
-    sup.address = ui->sup_address->toPlainText().toStdString();
-    sup.phone = ui->sup_phone->toPlainText().toStdString();
+    QMessageBox msg;
+    msg.setText("");
+    msg.setIcon(QMessageBox::Information);
+    msg.setWindowTitle("Check availability");
+    msg.exec();
+}
 
-    insert_supplier(sup);
 
-    /* clear fields after insertion */
-    ui->sup_id->setValue(0);
-    ui->sup_name->setText("");
-    ui->sup_address->setText("");
-    ui->sup_phone->setText("");
+void Medicine_Window::on_show_all_stock_clicked()
+{
 
-    /* add supplier names to Supplier combo-box */
-    vector<Supplier> suppliers = get_suppliers();
-    for (int i=0; i< suppliers.size();i++){
-        ui->md_suppliers->addItem(QString::fromStdString(suppliers[i].name));
-    }
+}
+
+
+void Medicine_Window::on_remove_selected_clicked()
+{
+
 }
 

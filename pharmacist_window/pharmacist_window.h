@@ -20,6 +20,18 @@ private slots:
 
     void on_logout_clicked();
 
+    void on_check_availability_clicked();
+
+    void on_add_medicine_clicked();
+
+    void on_check_price_clicked();
+
+    void on_edit_clicked();
+
+    void on_print_clicked();
+
+    void on_clear_table_clicked();
+
 private:
     Ui::Pharmacist_Window *ui;
 };

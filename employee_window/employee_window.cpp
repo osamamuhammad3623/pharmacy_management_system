@@ -18,6 +18,17 @@ Employee_Window::~Employee_Window()
     delete ui;
 }
 
+
+void Employee_Window::clear_insertion_fields(){
+    ui->emp_id->setValue(0);
+    ui->emp_fname->setText("");
+    ui->emp_lname->setText("");
+    ui->emp_username->setText("");
+    ui->emp_password->setText("");
+    ui->emp_salary->setValue(0);
+    ui->is_admin->setChecked(false);
+}
+
 void Employee_Window::on_add_emp_clicked()
 {
     Pharmacist new_emp;
@@ -31,17 +42,19 @@ void Employee_Window::on_add_emp_clicked()
         new_emp.is_admin = 1;
     }
 
-    string operation_result = insert_pharmacist(new_emp);
+    string operation_result;
+    if (ui->add_emp->text() == "Add"){
+        operation_result = insert_pharmacist(new_emp);
+    }else if (ui->add_emp->text() == "Update"){
+        //operation_result = update_pharmcaist(new_emp);
+        /* set things back to defaults */
+        ui->add_emp->setText("Add");
+        ui->emp_id->setEnabled(true);
+    }
+
     ui->msg->setText(QString::fromStdString(operation_result));
 
-    /* clear fields after insertion */
-    ui->emp_id->setValue(0);
-    ui->emp_fname->setText("");
-    ui->emp_lname->setText("");
-    ui->emp_username->setText("");
-    ui->emp_password->setText("");
-    ui->emp_salary->setValue(0);
-
+    clear_insertion_fields();
     on_refresh_pharmacist_table_clicked(); /* refresh table */
 }
 
@@ -68,18 +81,70 @@ void Employee_Window::on_refresh_pharmacist_table_clicked()
 
 void Employee_Window::on_remove_selected_row_clicked(){
     ph_list= get_pharmacists(); /* updating table */
+    string operation_result;
 
     /* iterating on rows and check which one that's selected */
-    int selected_index;
     for (int i=0; i< ui->pharmacist_table->rowCount(); i++){
+
         if (ui->pharmacist_table->item(i,0)->isSelected()){
-            selected_index=i;
+            int selected_ph = i;
+            /* check if the selected user is the last admin alive! */
+            int alive_admins=0;
+            for (Pharmacist p : ph_list){
+                if (p.is_admin){
+                    alive_admins++;
+                }
+            }
+
+            if (alive_admins==1){
+                ui->msg->setText("It's the last alive Admin!");
+            }else{
+                /* if there're more than one admin, you can delete one successfully */
+                operation_result = remove_pharmacist(ph_list[selected_ph].id);
+                ui->msg->setText(QString::fromStdString(operation_result));
+                break;
+            }
         }
     }
 
-    string operation_result = remove_pharmacist(ph_list[selected_index].id);
-    ui->msg->setText(QString::fromStdString(operation_result));
-
     on_refresh_pharmacist_table_clicked();
+}
+
+
+void Employee_Window::on_edit_ph_clicked()
+{
+    ph_list= get_pharmacists(); /* updating table */
+    string operation_result;
+
+    /* iterating on rows and check which one that's selected */
+    for (int i=0; i< ui->pharmacist_table->rowCount(); i++){
+
+        if (ui->pharmacist_table->item(i,0)->isSelected()){
+
+            /* get selected pharmacist data */
+            Pharmacist selected_ph = ph_list[i];
+
+            /* display his/her data on add employees fields */
+            ui->emp_id->setValue(stoi(selected_ph.id));
+            ui->emp_id->setEnabled(false); // you can't change ID
+            ui->emp_fname->setText(QString::fromStdString(selected_ph.fname));
+            ui->emp_lname->setText(QString::fromStdString(selected_ph.lname));
+            ui->emp_username->setText(QString::fromStdString(selected_ph.username));
+            ui->emp_password->setText(QString::fromStdString(selected_ph.password));
+            ui->emp_fname->setText(QString::fromStdString(selected_ph.fname));
+            ui->emp_salary->setValue(selected_ph.salary);
+            if (selected_ph.is_admin){
+                ui->is_admin->setChecked(true);
+            }else{
+                ui->is_admin->setChecked(false);
+            }
+            ui->add_emp->setText("Update");
+
+            /* set things back to defaults */
+            ui->add_emp->setText("Add");
+            ui->emp_id->setEnabled(true);
+            clear_insertion_fields();
+        }
+    }
 }
 

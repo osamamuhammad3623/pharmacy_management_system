@@ -37,15 +37,3 @@ void Admin_Panel::on_manage_med_clicked()
     launch_new_window(GUI_Medicine_Stock_Window, this);
 }
 
-
-void Admin_Panel::on_add_medicine_clicked()
-{
-
-}
-
-
-void Admin_Panel::on_add_medicine_2_clicked()
-{
-
-}
-

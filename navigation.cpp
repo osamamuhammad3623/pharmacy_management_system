@@ -37,7 +37,13 @@ void launch_new_window(Window_Type type, QWidget* current_window){
             supplier_window *main_window = new supplier_window();
             main_window->show();
             break;
-    }
+        }
+
+        case GUI_Pharmacist_Profile_Window:{
+            pharmacist_profile_window *main_window = new pharmacist_profile_window();
+            main_window->show();
+            break;
+        }
     }
 
     current_window->hide();

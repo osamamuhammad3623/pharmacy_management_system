@@ -29,14 +29,14 @@ void supplier_window::on_add_sup_clicked()
     if (ui->add_sup->text() == "Add"){
         operation_result = insert_supplier(sup);
     }else if (ui->add_sup->text() == "Update"){
-        //operation_result = update_supplier(sup);
+        operation_result = update_supplier(sup);
         /* set things back to defaults */
         ui->add_sup->setText("Add");
         ui->sup_id->setEnabled(true);
     }
 
     ui->msg->setText(QString::fromStdString(operation_result));
-
+    on_refresh_clicked();
     // clear fields
     ui->sup_id->setValue(0);
     ui->sup_name->setText("");
@@ -69,7 +69,7 @@ void supplier_window::on_remove_selected_row_clicked()
     for (int i=0; i< ui->sup_table->rowCount(); i++){
 
         if (ui->sup_table->item(i,0)->isSelected()){
-            //operation_result = remove_supplier(sup_list[i].id);
+            operation_result = delete_supplier(sup_list[i].id);
             ui->msg->setText(QString::fromStdString(operation_result));
             break;
         }

@@ -49,13 +49,14 @@ vector<Supplier> get_suppliers() {
     int result;
     result = sqlite3_open("Pharmacy.db", &db);
     sqlite3_stmt* stmt;
-    string query = "SELECT Name , Telephone, Address FROM SUPPLIER";
+    string query = "SELECT ID, Name , Telephone, Address FROM SUPPLIER";
     result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
     Supplier s;
     while (result = sqlite3_step(stmt) == SQLITE_ROW) {
-        s.name = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
-        s.phone = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
-        s.address = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2)));
+        s.id = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
+        s.name = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
+        s.phone = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2)));
+        s.address = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3)));
         v.push_back(s);
     }
     return v;
@@ -278,3 +279,147 @@ vector<Medicine> Medicine_available(string id, int quantity) {
 
         }
     }
+
+
+string delete_medicine(string med_id)
+{
+    char* messageError;
+    string result;
+    string sql = "DELETE FROM MEDICINE WHERE ID = '" + med_id + "' ";
+
+    int exit = sqlite3_open("Pharmacy.db", &db);
+    /* An open database, SQL to be evaluated, Callback function, 1st argument to callback, Error msg written here */
+    exit = sqlite3_exec(db, sql.c_str(), NULL, NULL, &messageError);
+    if (exit != SQLITE_OK) {
+        result = "Couldn't delete the Medicine";
+    }
+    else {
+        result = "Medicine deleted Successfully!";
+    }
+
+    return result;
+}
+
+string delete_supplier(string id)
+{
+    vector<string>v;
+    bool x = false;
+    char* err;
+    int result;
+    sqlite3_stmt* stmt;
+    result = sqlite3_open("Pharmacy.db", &db);
+    string q = "SELECT ID FROM SUPPLIER";
+    result = sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
+    while (result = sqlite3_step(stmt) == SQLITE_ROW) {
+        v.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+
+    }
+    for (int i = 0; i < v.size(); i++) {
+        if (v[i] == id) {
+            x = true;
+        }
+    }
+    if (x == true) {
+        string query = "DELETE FROM SUPPLIER WHERE ID ='" + id + "'";
+        result = sqlite3_exec(db, query.c_str(), NULL, 0, &err);
+        return "Supplier is deleted successfully";
+    }
+    else {
+        return "Not found supplier with this ID";
+    }
+}
+
+string update_pharmacist(Pharmacist p) {
+    char* err;
+    int result = 0;
+    result = sqlite3_open("Pharmacy.db", &db);
+    string q = "UPDATE PHARMACIST SET FName = '" + p.fname + "', LName = '" + p.lname + "', Username = '" + p.username + "', Password = '" + p.password + "', Salary = '" + to_string(p.salary) + "' , Is_admin = '" + to_string(p.is_admin) + "' WHERE ID = '" + p.id + "'";
+    result = sqlite3_exec(db, q.c_str(), NULL, 0, &err);
+    return "Pharmacist is updated Successfully";
+}
+
+string update_supplier(Supplier s) {
+    char* err;
+    int result = 0;
+    result = sqlite3_open("Pharmacy.db", &db);
+    string q ="UPDATE SUPPLIER SET Name = '"+s.name +"', Telephone = '"+s.phone +"', Address = '"+s.address+"' WHERE ID = '"+s.id+"'";
+    result = sqlite3_exec(db, q.c_str(), NULL, 0, &err);
+    return "Supplier is updated Successfully";
+}
+
+bool medicine_available(string name) {
+    vector<string> ii;
+    char* err;
+    int result = 0;
+    result = sqlite3_open("Pharmacy.db", &db);
+    string q = "SELECT Name From MEDICINE";
+    sqlite3_stmt* stmt;
+    result = sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
+    while (result = sqlite3_step(stmt) == SQLITE_ROW) {
+        ii.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+    }
+    for (int i = 0; i < ii.size(); i++) {
+        if (name == ii[i]) {
+            return true;
+        }
+    }
+    return false;
+
+}
+
+vector<Medicine> get_medicines() {
+    vector<Medicine> v;
+    char* err;
+    int result;
+    result = sqlite3_open("Pharmacy.db", &db);
+    sqlite3_stmt* stmt;
+    string query = "SELECT * FROM MEDICINE";
+    result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
+    Medicine m;
+    while (result = sqlite3_step(stmt) == SQLITE_ROW) {
+
+        m.id = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
+        m.name = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
+        m.quantity = sqlite3_column_int(stmt, 2);
+        m.sell_price = sqlite3_column_double(stmt, 3);
+        m.purchase_price= sqlite3_column_double(stmt, 4);
+        m.category = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5)));
+        m.supplier_company = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6)));
+        v.push_back(m);
+    }
+    return v;
+}
+
+double get_medicine_price(string name) {
+
+    int result = 0;
+    double d = 0;
+    sqlite3_stmt* stmt;
+    result = sqlite3_open("Pharmacy.db", &db);
+    string q = "SELECT Sell FROM MEDICINE WHERE Name = '" + name + "'";
+    result = sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
+    sqlite3_step(stmt);
+    d = sqlite3_column_double(stmt, 0);
+    return d;
+}
+
+Pharmacist get_pharmacist(string username) {
+    Pharmacist p;
+    char* err;
+    int result = 0;
+    sqlite3_stmt* stmt;
+    result = sqlite3_open("Pharmacy.db", &db);
+    string q = "SELECT ID , FName , LName , Username , Password , Salary , Is_admin FROM PHARMACIST WHERE Username ='" + username + "'";
+    result = sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
+    sqlite3_step(stmt);
+    p.id = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
+    p.fname = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
+    p.lname = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2)));
+    p.username = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3)));
+    p.password = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4)));
+    p.salary = sqlite3_column_int(stmt, 5);
+    p.is_admin = sqlite3_column_int(stmt, 6);
+
+    return p;
+
+}

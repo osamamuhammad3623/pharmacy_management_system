@@ -45,8 +45,9 @@ void Employee_Window::on_add_emp_clicked()
     string operation_result;
     if (ui->add_emp->text() == "Add"){
         operation_result = insert_pharmacist(new_emp);
+
     }else if (ui->add_emp->text() == "Update"){
-        //operation_result = update_pharmcaist(new_emp);
+        operation_result = update_pharmacist(new_emp);
         /* set things back to defaults */
         ui->add_emp->setText("Add");
         ui->emp_id->setEnabled(true);
@@ -61,7 +62,7 @@ void Employee_Window::on_add_emp_clicked()
 
 void Employee_Window::on_back_clicked()
 {
-    launch_new_window(GUI_Admin_Panel_Window, this);
+    launch_new_window(GUI_Admin_Panel_Window,this);
 }
 
 
@@ -89,20 +90,27 @@ void Employee_Window::on_remove_selected_row_clicked(){
         if (ui->pharmacist_table->item(i,0)->isSelected()){
             int selected_ph = i;
             /* check if the selected user is the last admin alive! */
-            int alive_admins=0;
-            for (Pharmacist p : ph_list){
-                if (p.is_admin){
-                    alive_admins++;
-                }
-            }
-
-            if (alive_admins==1){
-                ui->msg->setText("It's the last alive Admin!");
-            }else{
-                /* if there're more than one admin, you can delete one successfully */
+            if (ph_list[i].is_admin == 0){
+                // not admin
                 operation_result = remove_pharmacist(ph_list[selected_ph].id);
                 ui->msg->setText(QString::fromStdString(operation_result));
-                break;
+
+            }else{
+                int alive_admins=0;
+                for (Pharmacist p : ph_list){
+                    if (p.is_admin){
+                        alive_admins++;
+                    }
+                }
+
+                if (alive_admins==1){
+                    ui->msg->setText("It's the last alive Admin!");
+                }else{
+                    /* if there're more than one admin, you can delete one successfully */
+                    operation_result = remove_pharmacist(ph_list[selected_ph].id);
+                    ui->msg->setText(QString::fromStdString(operation_result));
+                    break;
+                }
             }
         }
     }
@@ -121,29 +129,21 @@ void Employee_Window::on_edit_ph_clicked()
 
         if (ui->pharmacist_table->item(i,0)->isSelected()){
 
-            /* get selected pharmacist data */
-            Pharmacist selected_ph = ph_list[i];
-
             /* display his/her data on add employees fields */
-            ui->emp_id->setValue(stoi(selected_ph.id));
+            ui->emp_id->setValue(stoi(ph_list[i].id));
             ui->emp_id->setEnabled(false); // you can't change ID
-            ui->emp_fname->setText(QString::fromStdString(selected_ph.fname));
-            ui->emp_lname->setText(QString::fromStdString(selected_ph.lname));
-            ui->emp_username->setText(QString::fromStdString(selected_ph.username));
-            ui->emp_password->setText(QString::fromStdString(selected_ph.password));
-            ui->emp_fname->setText(QString::fromStdString(selected_ph.fname));
-            ui->emp_salary->setValue(selected_ph.salary);
-            if (selected_ph.is_admin){
+            ui->emp_fname->setText(QString::fromStdString(ph_list[i].fname));
+            ui->emp_lname->setText(QString::fromStdString(ph_list[i].lname));
+            ui->emp_username->setText(QString::fromStdString(ph_list[i].username));
+            ui->emp_password->setText(QString::fromStdString(ph_list[i].password));
+            ui->emp_fname->setText(QString::fromStdString(ph_list[i].fname));
+            ui->emp_salary->setValue(ph_list[i].salary);
+            if (ph_list[i].is_admin){
                 ui->is_admin->setChecked(true);
             }else{
                 ui->is_admin->setChecked(false);
             }
             ui->add_emp->setText("Update");
-
-            /* set things back to defaults */
-            ui->add_emp->setText("Add");
-            ui->emp_id->setEnabled(true);
-            clear_insertion_fields();
         }
     }
 }

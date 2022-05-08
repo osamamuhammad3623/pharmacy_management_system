@@ -32,6 +32,8 @@ private slots:
 
     void on_clear_table_clicked();
 
+    void on_check_availability_2_clicked();
+
 private:
     Ui::Pharmacist_Window *ui;
 };

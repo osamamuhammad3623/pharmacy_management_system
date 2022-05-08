@@ -16,6 +16,7 @@ SOURCES += \
     mainwindow.cpp \
     medicine_window/medicine_window.cpp \
     navigation.cpp \
+    pharmacist_profile_window/pharmacist_profile_window.cpp \
     pharmacist_window/pharmacist_window.cpp \
     db/shell.c \
     db/sqlite3.c \
@@ -29,6 +30,7 @@ HEADERS += \
     mainwindow.h \
     medicine_window/medicine_window.h \
     navigation.h \
+    pharmacist_profile_window/pharmacist_profile_window.h \
     pharmacist_window/pharmacist_window.h \
     db/sqlite3.h \
     db/sqlite3ext.h \
@@ -39,6 +41,7 @@ FORMS += \
     employee_window/employee_window.ui \
     mainwindow.ui \
     medicine_window/medicine_window.ui \
+    pharmacist_profile_window/pharmacist_profile_window.ui \
     pharmacist_window/pharmacist_window.ui \
     supplier_window/supplier_window.ui
 

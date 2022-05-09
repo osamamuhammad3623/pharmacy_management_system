@@ -149,7 +149,7 @@
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>410</y>
+     <y>440</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -559,7 +559,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>440</y>
+     <y>460</y>
      <width>441</width>
      <height>61</height>
     </rect>
@@ -571,6 +571,41 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>390</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Expire date</string>
+   </property>
+  </widget>
+  <widget class="QDateEdit" name="ex_date">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>400</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="date">
+    <date>
+     <year>2022</year>
+     <month>10</month>
+     <day>5</day>
+    </date>
    </property>
   </widget>
  </widget>

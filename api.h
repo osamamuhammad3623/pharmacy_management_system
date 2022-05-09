@@ -23,8 +23,8 @@ string insert_medicine(Medicine md);
 string insert_pharmacist(Pharmacist ph);
 string insert_supplier(Supplier sup);
 
-vector<Medicine> Medicine_available(string id, int quantity);
-bool medicine_available(string name);
+vector<Medicine> get_alternatives(string id);
+bool medicine_available(string name, int q);
 
 string remove_pharmacist(string id);
 string delete_medicine(string id);
@@ -34,5 +34,6 @@ int is_admin(string user_name, string pass);
 
 string update_pharmacist(Pharmacist p);
 string update_supplier(Supplier s);
+void update_sold_medicine(string name, int quantity);
 
 #endif // API_H

@@ -57,6 +57,7 @@ void Medicine_Window::on_add_medicine_clicked()
     md.sell_price = ui->md_sell_price->value();
     md.category = ui->md_category->currentText().toStdString();
     md.supplier_company = ui->md_suppliers->currentText().toStdString();
+    md.expire_date = ui->ex_date->date().toString("dd/MM/yyyy").toStdString();
 
     string operation_result = insert_medicine(md);
     ui->msg->setText(QString::fromStdString(operation_result));
@@ -72,7 +73,7 @@ void Medicine_Window::on_add_medicine_clicked()
 
 void Medicine_Window::on_check_availability_clicked()
 {
-    bool found = medicine_available(ui->med_check_name->text().toStdString());
+    bool found = medicine_available(ui->med_check_name->text().toStdString(),0);
     QMessageBox msg;
     if (found){
         msg.setText("Medicine is available!");

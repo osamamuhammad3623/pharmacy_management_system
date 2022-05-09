@@ -95,7 +95,7 @@ string insert_medicine(Medicine md){
         return "Please Enter valid numbers";
     }
 
-    string query = "INSERT INTO MEDICINE(ID,Name,Quantity,Sell,Purchase,Category,Supplier) VALUES(?,?,?,?,?,?,?);";
+    string query = "INSERT INTO MEDICINE(ID,Name,Quantity,Sell,Purchase,Category,Insertion_date,Expiry_date,Supplier) VALUES(?,?,?,?,?,?,?,?,?);";
     result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
     sqlite3_bind_text(stmt, 1, md.id.c_str(), md.id.length(), SQLITE_TRANSIENT);
     sqlite3_bind_text(stmt, 2, md.name.c_str(), md.name.length(), SQLITE_TRANSIENT);
@@ -103,7 +103,9 @@ string insert_medicine(Medicine md){
     sqlite3_bind_double(stmt, 4, md.sell_price);
     sqlite3_bind_double(stmt, 5, md.purchase_price);
     sqlite3_bind_text(stmt, 6, md.category.c_str(), md.category.length(), SQLITE_TRANSIENT);
-    sqlite3_bind_text(stmt, 7, md.supplier_company.c_str(), md.supplier_company.length(), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 7, md.date_added.c_str(), md.date_added.length(), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 8, md.expire_date.c_str(), md.expire_date.length(), SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 9, md.supplier_company.c_str(), md.supplier_company.length(), SQLITE_TRANSIENT);
     sqlite3_step(stmt);
     sqlite3_finalize(stmt);
     return "Medicine inserted Successfully"; //Medicine inserted Successfully
@@ -224,7 +226,7 @@ int is_admin(string user_name, string pass)
 }
 
 
-vector<Medicine> Medicine_available(string id, int quantity) {
+vector<Medicine> get_alternatives(string id) {
     vector<Medicine> v;
     int x;
     const unsigned char* c;
@@ -233,52 +235,40 @@ vector<Medicine> Medicine_available(string id, int quantity) {
     sqlite3_stmt* stmt;
     result = sqlite3_open("Pharmacy.db", &db);
 
-        string query = "SELECT Quantity,Category FROM MEDICINE WHERE ID = '" + id + "'";
-        result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
-        sqlite3_step(stmt);
-        x = sqlite3_column_int(stmt, 0);
-        c = sqlite3_column_text(stmt, 1);
-        str = std::string(reinterpret_cast<const char*>(c));
-        if (x < quantity) {
+    string query = "SELECT Quantity,Category FROM MEDICINE WHERE ID = '" + id + "'";
+    result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
+    sqlite3_step(stmt);
+    x = sqlite3_column_int(stmt, 0);
+    c = sqlite3_column_text(stmt, 1);
+    str = std::string(reinterpret_cast<const char*>(c));
 
-            string query = "SELECT ID,Name,Quantity,Sell FROM MEDICINE WHERE Category = '" + str + "' AND Quantity !=0";
-            result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
-            Medicine m;
+    query = "SELECT ID,Name,Quantity,Sell FROM MEDICINE WHERE Category = '" + str + "' AND Quantity !=0";
+    result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
+    Medicine m;
 
-                  while (result = sqlite3_step(stmt) == SQLITE_ROW) {
+    while (result = sqlite3_step(stmt) == SQLITE_ROW) {
 
-                      m.id = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
-                      m.name= std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
-                      m.quantity = sqlite3_column_int(stmt, 2);
-                      m.sell_price= sqlite3_column_double(stmt, 3);
-                      m.is_alternative = true;
+        m.id = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
+        m.name= std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
+        m.quantity = sqlite3_column_int(stmt, 2);
+        m.sell_price= sqlite3_column_double(stmt, 3);
+        m.is_alternative = true;
 
-                      v.push_back(m);
-
-                }
-                  return v;
-            }
-
-
-        else {
-            char* err;
-            Medicine m;
-            int price = 0;
-            string name;
-            string query = "SELECT ID,Name ,Sell FROM MEDICINE WHERE ID ='" + id + "'";
-            result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
-            sqlite3_step(stmt);
-            m.id = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
-            m.name = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1)));
-            m.sell_price = sqlite3_column_int(stmt, 2);
-            m.is_alternative = false;
-            v.push_back(m);
-            string q = "UPDATE MEDICINE SET Quantity = Quantity -" + to_string(quantity) + " WHERE ID = '" + id + "'";
-            result = sqlite3_exec(db, q.c_str(), NULL, 0, &err);
-            return v;
-
-        }
+        v.push_back(m);
     }
+
+    return v;
+}
+
+void update_sold_medicine(string name, int quantity){
+    sqlite3_stmt* stmt;
+    sqlite3_open("Pharmacy.db", &db);
+
+    string query = "UPDATE MEDICINE SET Quantity = Quantity -" + to_string(quantity) + " WHERE Name = '" + name + "';";
+    sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
+    sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+}
 
 
 string delete_medicine(string med_id)
@@ -347,19 +337,21 @@ string update_supplier(Supplier s) {
     return "Supplier is updated Successfully";
 }
 
-bool medicine_available(string name) {
+bool medicine_available(string name, int qu) {
     vector<string> ii;
     char* err;
     int result = 0;
     result = sqlite3_open("Pharmacy.db", &db);
-    string q = "SELECT Name From MEDICINE";
+    string q = "SELECT Name, Quantity From MEDICINE";
     sqlite3_stmt* stmt;
     result = sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
+    string md_name;
+    int md_q;
     while (result = sqlite3_step(stmt) == SQLITE_ROW) {
-        ii.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
-    }
-    for (int i = 0; i < ii.size(); i++) {
-        if (name == ii[i]) {
+        md_name = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0)));
+        md_q = sqlite3_column_int(stmt, 1);
+
+        if (name == md_name && md_q >= qu){
             return true;
         }
     }
@@ -384,7 +376,9 @@ vector<Medicine> get_medicines() {
         m.sell_price = sqlite3_column_double(stmt, 3);
         m.purchase_price= sqlite3_column_double(stmt, 4);
         m.category = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5)));
-        m.supplier_company = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6)));
+        m.date_added = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6)));
+        m.expire_date = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 7)));
+        m.supplier_company = string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 8)));
         v.push_back(m);
     }
     return v;

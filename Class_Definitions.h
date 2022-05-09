@@ -26,6 +26,9 @@ public:
     string supplier_company;
     string category;
     bool is_alternative;
+
+    string date_added;
+    string expire_date;
 };
 
 

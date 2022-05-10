@@ -6,11 +6,13 @@ void launch_new_window(Window_Type type, QWidget* current_window){
     switch(type){
         case GUI_Employees_Window:{
             Employee_Window *emp_window = new Employee_Window();
+            emp_window->setWindowTitle("Manage Users");
             emp_window->show();
             break;
         }
         case GUI_Medicine_Stock_Window:{
             Medicine_Window *medicine_window = new Medicine_Window();
+            medicine_window->setWindowTitle("Manage Medicine stock");
             medicine_window->show();
             break;
         }

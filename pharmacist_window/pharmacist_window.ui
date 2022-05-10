@@ -149,7 +149,7 @@
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>280</y>
+     <y>290</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -167,7 +167,7 @@
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>200</y>
+     <y>170</y>
      <width>201</width>
      <height>31</height>
     </rect>
@@ -205,50 +205,11 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_14">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>120</y>
-     <width>101</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>ID</string>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="md_id">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>120</y>
-     <width>201</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="minimum">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <number>200</number>
-   </property>
-  </widget>
   <widget class="QTextEdit" name="md_name">
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>160</y>
+     <y>130</y>
      <width>201</width>
      <height>31</height>
     </rect>
@@ -263,7 +224,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>190</y>
+     <y>160</y>
      <width>101</width>
      <height>51</height>
     </rect>
@@ -281,7 +242,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>160</y>
+     <y>130</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -376,9 +337,9 @@
   <widget class="QLineEdit" name="med_check_name">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>240</x>
      <y>380</y>
-     <width>211</width>
+     <width>201</width>
      <height>31</height>
     </rect>
    </property>
@@ -402,10 +363,13 @@
    </property>
   </widget>
   <widget class="QLabel" name="label_18">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>230</y>
+     <y>200</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -420,10 +384,13 @@
    </property>
   </widget>
   <widget class="QDateEdit" name="md_date">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>240</x>
-     <y>240</y>
+     <y>210</y>
      <width>201</width>
      <height>31</height>
     </rect>
@@ -434,6 +401,47 @@
      <month>10</month>
      <day>5</day>
     </date>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="md_time">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>250</y>
+     <width>201</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="displayFormat">
+    <string>h:mm AP</string>
+   </property>
+   <property name="time">
+    <time>
+     <hour>17</hour>
+     <minute>0</minute>
+     <second>0</second>
+    </time>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_19">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>240</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Time</string>
    </property>
   </widget>
  </widget>

@@ -41,5 +41,21 @@ public:
 };
 
 
+class invoice_item {
+public:
+    string name;
+    double price;
+    int quantity;
+};
+
+
+class invoice{
+public:
+    string name;
+    string quantity;
+    string date;
+    string time;
+};
+
 
 #endif // CLASS_DEFINITIONS_H

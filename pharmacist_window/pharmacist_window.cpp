@@ -23,13 +23,26 @@ void Pharmacist_Window::on_logout_clicked()
     launch_new_window(GUI_Login_Window,this);
 }
 
+string last_date;
+void convert_date_form_ph(string& date_form){
+    string day, month, year;
+    day = date_form[0] + date_form[1];
+    month = date_form[3] + date_form[4];
+    year = date_form[6] + date_form[7] + date_form[8] + date_form[9];
+
+    date_form = year + "-" + month + "-" + day;
+    last_date = date_form;
+}
+
+
 void Pharmacist_Window::on_add_medicine_clicked()
 {
     Medicine md;
-    md.id = ui->md_id->text().toStdString();
+    md.id = "1";
     md.name= ui->md_name->toPlainText().toStdString();
     md.quantity = ui->md_quantity->value();
     md.date_added = ui->md_date->date().toString("dd/MM/yyyy").toStdString();
+    convert_date_form_ph(md.date_added);
 
     bool found= medicine_available(md.name, md.quantity);
     if (found){
@@ -49,7 +62,6 @@ void Pharmacist_Window::on_add_medicine_clicked()
         msg.exec();
     }
 
-    ui->md_id->setValue(1);
     ui->md_name->setText("");
     ui->md_quantity->setValue(0);
 }
@@ -79,18 +91,23 @@ void Pharmacist_Window::on_edit_clicked()
 void Pharmacist_Window::on_print_clicked()
 {
     ofstream file("invoice.txt");
-    QString name; int q, p;
+    string name, time; int q, p;
+
     for (int i=0; i< ui->total_table->rowCount(); i++){
-        name = ui->total_table->model()->data(ui->total_table->model()->index(i,0)).toString();
+        name = ui->total_table->model()->data(ui->total_table->model()->index(i,0)).toString().toStdString();
         q = ui->total_table->model()->data(ui->total_table->model()->index(i,1)).toInt();
         p = ui->total_table->model()->data(ui->total_table->model()->index(i,2)).toInt();
-
         // update medicine quantity in DB
-        update_sold_medicine(name.toStdString(), q);
+        // DOES NOT WORK
+        update_medicine(name, q);
+        // insert invoice
+        // DOES NOT WORK
+        time = ui->md_time->time().toString().toStdString();
+        insert_invoice(name, time, last_date, q);
 
         // print
         file << "Medicine " << (i+1) << ":-\n";
-        file << "   Name: " << name.toStdString() << ",\n";
+        file << "   Name: " << name << ",\n";
         file << "   Quantity: " << q << ",\n";
         file << "   Price: " << p << ",\n\n";
     }

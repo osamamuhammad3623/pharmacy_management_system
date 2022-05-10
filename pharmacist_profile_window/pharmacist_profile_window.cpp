@@ -2,14 +2,12 @@
 #include "api.h"
 #include "ui_pharmacist_profile_window.h"
 
-Pharmacist current_ph;
-
 pharmacist_profile_window::pharmacist_profile_window(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::pharmacist_profile_window)
 {
     ui->setupUi(this);
-    current_ph =  get_pharmacist(ph_username);
+    Pharmacist current_ph =  get_pharmacist(ph_username);
     ui->emp_id->setValue(stoi(current_ph.id));
     ui->emp_username->setText(QString::fromStdString(current_ph.username));
     ui->emp_password->setText(QString::fromStdString(current_ph.password));
@@ -26,9 +24,14 @@ pharmacist_profile_window::~pharmacist_profile_window()
 
 void pharmacist_profile_window::on_save_clicked()
 {
-    current_ph.username =  ui->emp_username->toPlainText().toStdString();
-    current_ph.password = ui->emp_password->toPlainText().toStdString();
-    string result_operation = update_pharmacist(current_ph);
+    Pharmacist updated_ph;
+    updated_ph.id = to_string(ui->emp_id->value());
+    updated_ph.username =  ui->emp_username->toPlainText().toStdString();
+    ph_username = updated_ph.username;
+    updated_ph.password = ui->emp_password->toPlainText().toStdString();
+
+    string result_operation = update_pharmacist_profile(updated_ph);
+    ph_username = updated_ph.username;
     QMessageBox msg;
     msg.setText(QString::fromStdString(result_operation));
     msg.exec();

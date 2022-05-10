@@ -249,33 +249,53 @@ vector<Medicine> get_alternatives(string id) {
 using namespace std;
 
 string update_medicine(string name, int quantity) {
-    sqlite3_open("Pharmacy.db", &db);
-    string q = "UPDATE MEDICINE SET Quantity = Quantity -" + to_string(quantity) + " WHERE Name = '" + name + "'";
-    int result = sqlite3_exec(db, q.c_str(), NULL, 0, NULL);
-    if (result != SQLITE_OK){
-        return "Something wrong happened";
+    char* err;
+    sqlite3_stmt* stmt;
+    int result = 0;
+    result = sqlite3_open("Pharmacy.db", &db);
+    int quan;
+    string query = "SELECT Quantity FROM MEDICINE WHERE Name = '" + name + "'";
+    result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
+    sqlite3_step(stmt);
+    quan = sqlite3_column_int(stmt, 0);
+    if (quan < quantity) {
+        return "The entered quantity is more than the quantity in the stock!! ";
     }
-    return "Medicine quantity is updated Successfully";
+    else {
+        string q = "UPDATE MEDICINE SET Quantity = Quantity -" + to_string(quantity) + " WHERE Name = '" + name + "'";
+        result = sqlite3_exec(db, q.c_str(), NULL, 0, &err);
+        return "Medicine quantity is updated Successfully";
+
+    }
 }
 
 
-string delete_medicine(string med_id)
+string delete_medicine(string id)
 {
-    char* messageError;
-    string result;
-    string sql = "DELETE FROM MEDICINE WHERE ID = '" + med_id + "' ";
+    vector<string>v;
+    bool x = false;
+    char* err;
+    sqlite3_stmt* stmt;
+    sqlite3_open("Pharmacy.db", &db);
+    string q = "SELECT ID FROM MEDICINE";
+    sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        v.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
 
-    int exit = sqlite3_open("Pharmacy.db", &db);
-    /* An open database, SQL to be evaluated, Callback function, 1st argument to callback, Error msg written here */
-    exit = sqlite3_exec(db, sql.c_str(), NULL, NULL, &messageError);
-    if (exit != SQLITE_OK) {
-        result = "Couldn't delete the Medicine";
+    }
+    for (int i = 0; i < v.size(); i++) {
+        if (v[i] == id) {
+            x = true;
+        }
+    }
+    if (x == true) {
+        string query = "DELETE FROM MEDICINE WHERE ID ='" + id + "'";
+        sqlite3_exec(db, query.c_str(), NULL, 0, &err);
+        return "Medicine is deleted successfully";
     }
     else {
-        result = "Medicine deleted Successfully!";
+        return "Not found medicine with this ID";
     }
-
-    return result;
 }
 
 string delete_supplier(string id)

@@ -105,7 +105,7 @@ void Pharmacist_Window::on_print_clicked()
         time = ui->md_time->time().toString().toStdString();
         insert_invoice(name, time, last_date, q);
 
-        // print
+        // print to .txt
         file << "Medicine " << (i+1) << ":-\n";
         file << "   Name: " << name << ",\n";
         file << "   Quantity: " << q << ",\n";

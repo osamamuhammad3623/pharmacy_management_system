@@ -1,6 +1,8 @@
 #ifndef API_H
 #define API_H
 #include "db/sqlite3.h"
+#include "QSqlDatabase"
+#include "QSqlQuery"
 #include "navigation.h"
 #include "QMessageBox"
 
@@ -37,6 +39,6 @@ int is_admin(string user_name, string pass);
 string update_pharmacist(Pharmacist p);
 string update_pharmacist_profile(Pharmacist p);
 string update_supplier(Supplier s);
-string update_medicine(string name, int quantity);
+string update_medicine(QString name, int quantity);
 
 #endif // API_H

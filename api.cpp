@@ -142,7 +142,7 @@ string insert_pharmacist(Pharmacist ph) {
     sqlite3_step(stmt);
     sqlite3_finalize(stmt);
 
-    return "Pharmacist inserted successfully";
+    return "User inserted successfully";
 
 }
 
@@ -245,28 +245,16 @@ vector<Medicine> get_alternatives(string id) {
     return v;
 }
 
-#include <iostream>
-using namespace std;
+string update_medicine(QString name, int quantity) {
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("Pharmacy.db");
+    db.open();
+    QSqlQuery query;
 
-string update_medicine(string name, int quantity) {
-    char* err;
-    sqlite3_stmt* stmt;
-    int result = 0;
-    result = sqlite3_open("Pharmacy.db", &db);
-    int quan;
-    string query = "SELECT Quantity FROM MEDICINE WHERE Name = '" + name + "'";
-    result = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
-    sqlite3_step(stmt);
-    quan = sqlite3_column_int(stmt, 0);
-    if (quan < quantity) {
-        return "The entered quantity is more than the quantity in the stock!! ";
-    }
-    else {
-        string q = "UPDATE MEDICINE SET Quantity = Quantity -" + to_string(quantity) + " WHERE Name = '" + name + "'";
-        result = sqlite3_exec(db, q.c_str(), NULL, 0, &err);
-        return "Medicine quantity is updated Successfully";
+    QString q = "INSERT INTO MEDICINE(ID,Name,Quantity) VALUES ('16', 'med3', 48)";
 
-    }
+    query.exec(q);
+    return "success";
 }
 
 

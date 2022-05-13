@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,9 +17,9 @@ SOURCES += \
     medicine_window/medicine_window.cpp \
     navigation.cpp \
     pharmacist_profile_window/pharmacist_profile_window.cpp \
-    pharmacist_window/pharmacist_window.cpp \
     db/shell.c \
     db/sqlite3.c \
+    pharmacist_window/pharmacist_window.cpp \
     supplier_window/supplier_window.cpp
 
 HEADERS += \
@@ -31,9 +31,9 @@ HEADERS += \
     medicine_window/medicine_window.h \
     navigation.h \
     pharmacist_profile_window/pharmacist_profile_window.h \
-    pharmacist_window/pharmacist_window.h \
     db/sqlite3.h \
     db/sqlite3ext.h \
+    pharmacist_window/pharmacist_window.h \
     supplier_window/supplier_window.h
 
 FORMS += \

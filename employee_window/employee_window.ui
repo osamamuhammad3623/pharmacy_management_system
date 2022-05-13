@@ -355,7 +355,7 @@
     </font>
    </property>
    <property name="text">
-    <string>List of pharmacists</string>
+    <string>List of users</string>
    </property>
   </widget>
   <widget class="QRadioButton" name="is_admin">

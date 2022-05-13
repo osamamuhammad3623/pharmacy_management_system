@@ -106,7 +106,7 @@
     <string>Manage Medicine Stock</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="add_medicine">
+  <widget class="QPushButton" name="show_profit">
    <property name="geometry">
     <rect>
      <x>390</x>
@@ -181,7 +181,7 @@
     <string>Medicines Sold in month:</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="add_medicine_2">
+  <widget class="QPushButton" name="show_med_sold">
    <property name="geometry">
     <rect>
      <x>390</x>

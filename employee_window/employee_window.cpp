@@ -1,7 +1,6 @@
 #include "employee_window.h"
 #include "api.h"
 #include "ui_employee_window.h"
-#include "QDebug"
 
 vector<Pharmacist> ph_list;
 
@@ -57,6 +56,7 @@ void Employee_Window::on_add_emp_clicked()
 
     clear_insertion_fields();
     on_refresh_pharmacist_table_clicked(); /* refresh table */
+
 }
 
 

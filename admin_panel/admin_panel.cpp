@@ -36,4 +36,3 @@ void Admin_Panel::on_manage_med_clicked()
 {
     launch_new_window(GUI_Medicine_Stock_Window, this);
 }
-

@@ -24,7 +24,7 @@ void launch_new_window(Window_Type type, QWidget* current_window){
         }
 
         case GUI_Pharmacist_Window:{
-            Pharmacist_Window *ph_window = new Pharmacist_Window();
+            Pharmacist_window *ph_window = new Pharmacist_window();
             ph_window->show();
             break;
         }

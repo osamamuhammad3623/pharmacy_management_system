@@ -245,13 +245,14 @@ vector<Medicine> get_alternatives(string id) {
     return v;
 }
 
-string update_medicine(QString name, int quantity) {
+// insert, delete
+string update_medicine(string name, int quantity) {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("Pharmacy.db");
     db.open();
     QSqlQuery query;
-
-    QString q = "INSERT INTO MEDICINE(ID,Name,Quantity) VALUES ('16', 'med3', 48)";
+    QString q = "UPDATE MEDICINE SET Quantity = Quantity - " + QString::number(quantity)+ " WHERE Name = '" + QString::fromStdString(name) + "'";
+    // "UPDATE PHARMACIST SET FName = '3mo' WHERE ID = '2'"
 
     query.exec(q);
     return "success";

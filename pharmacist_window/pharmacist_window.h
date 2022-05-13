@@ -18,6 +18,10 @@ public:
 private slots:
     void on_print_invoice_clicked();
 
+    void on_add_medicine_clicked();
+
+    void on_clear_invoice_clicked();
+
 private:
     Ui::Pharmacist_window *ui;
 };

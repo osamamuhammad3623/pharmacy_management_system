@@ -1,6 +1,7 @@
 #include "medicine_window.h"
 #include "ui_medicine_window.h"
 #include "api.h"
+#include "QDebug"
 
 vector<Medicine> med_list;
 

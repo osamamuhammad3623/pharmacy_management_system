@@ -38,7 +38,8 @@ void pharmacist_profile_window::on_save_clicked()
     launch_new_window(GUI_Pharmacist_Window,this);
 }
 
-void pharmacist_profile_window::on_save_2_clicked()
+
+void pharmacist_profile_window::on_cancel_clicked()
 {
     launch_new_window(GUI_Pharmacist_Window, this);
 }

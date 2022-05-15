@@ -16,9 +16,15 @@ public:
     ~pharmacist_profile_window();
 
 private slots:
+    /**
+    * A function to update pharmacist username & password
+    */
     void on_save_clicked();
 
-    void on_save_2_clicked();
+    /**
+    * A function to navigate back to Pharmacist panel window without applying any updates
+    */
+    void on_cancel_clicked();
 
 private:
     Ui::pharmacist_profile_window *ui;

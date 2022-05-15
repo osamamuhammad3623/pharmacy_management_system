@@ -39,11 +39,4 @@ public:
     string address;
 };
 
-
-class invoice_item {
-public:
-    string name;
-    double price;
-    int quantity;
-};
 #endif // CLASS_DEFINITIONS_H

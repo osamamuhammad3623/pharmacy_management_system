@@ -15,6 +15,9 @@ public:
     explicit Pharmacist_window(QWidget *parent = nullptr);
     ~Pharmacist_window();
 
+    /**
+    * A function to display medicines table (get medicines data from DB and display it)
+    */
     void show_available_medicines();
 
 private slots:

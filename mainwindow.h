@@ -16,6 +16,13 @@ public:
     ~MainWindow();
 
 private slots:
+    /**
+    * A function to login to the user main panel according to its role [Admin or Pharmacist]
+    *   - Take user-input credentials and check in the database
+    *   - if it's a pharmacist credentials, navigate to a Pharmacist panel
+    *   - if it's an admin credentials, navigate to an Admin panel
+    *   - otherwise, display that credentials are invalid
+    */
     void on_login_clicked();
 
 private:

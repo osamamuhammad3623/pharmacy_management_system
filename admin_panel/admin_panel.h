@@ -18,10 +18,19 @@ public:
 private slots:
     void on_logout_clicked();
 
+    /**
+    * A function to navigate to users window
+    */
     void on_manage_users_clicked();
 
+    /**
+    * A function to navigate to suppliers window
+    */
     void on_manage_suppliers_clicked();
 
+    /**
+    * A function to navigate to medicines window
+    */
     void on_manage_med_clicked();
 
 private:

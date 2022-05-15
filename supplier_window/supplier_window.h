@@ -16,14 +16,27 @@ public:
     ~supplier_window();
 
 private slots:
+
     void on_add_sup_clicked();
 
+    /**
+    * A function to update suppliers table (get suppliers data from DB and display it)
+    */
     void on_refresh_clicked();
 
+    /**
+    * A function to delete a supplier from the stock in database
+    */
     void on_remove_selected_row_clicked();
 
+    /**
+    * A function to update a supplier data
+    */
     void on_edit_clicked();
 
+    /**
+    * A function to navigate back to Admin panel window
+    */
     void on_back_clicked();
 
 private:

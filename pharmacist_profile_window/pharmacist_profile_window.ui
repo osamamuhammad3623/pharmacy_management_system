@@ -217,7 +217,7 @@
     <number>0</number>
    </property>
   </widget>
-  <widget class="QPushButton" name="save_2">
+  <widget class="QPushButton" name="cancel">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -232,7 +232,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Back without save</string>
+    <string>Cancel</string>
    </property>
   </widget>
  </widget>

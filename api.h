@@ -4,7 +4,9 @@
 #include "navigation.h"
 #include "QMessageBox"
 
+/* database connection */
 extern sqlite3* db;
+
 /* will be used to send pharmacist username from login window [mainwindow] to pharmacist window */
 extern string ph_username;
 

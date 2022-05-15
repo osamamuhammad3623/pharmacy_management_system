@@ -1,17 +1,12 @@
 #ifndef API_H
 #define API_H
 #include "db/sqlite3.h"
-#include "QSqlDatabase"
-#include "QSqlQuery"
 #include "navigation.h"
 #include "QMessageBox"
 
-
+extern sqlite3* db;
 /* will be used to send pharmacist username from login window [mainwindow] to pharmacist window */
 extern string ph_username;
-
-
-extern sqlite3* db;
 
 vector<Medicine> check_shortage(int quantity);
 
@@ -24,14 +19,13 @@ Pharmacist get_pharmacist(string username);
 string insert_medicine(Medicine md);
 string insert_pharmacist(Pharmacist ph);
 string insert_supplier(Supplier sup);
-string insert_invoice(string name, string time, string date, int quantity);
 
-vector<Medicine> get_alternatives(string id);
+vector<Medicine> get_alternatives(string name);
 bool medicine_available(string name, int q);
-double calculate_profit(string month);
 
 string remove_pharmacist(string id);
 string delete_medicine(string id);
+string delete_medicine_by_name(string name);
 string delete_supplier(string sup_id);
 
 int is_admin(string user_name, string pass);

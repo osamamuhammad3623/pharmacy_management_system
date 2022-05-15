@@ -27,7 +27,6 @@ public:
     string category;
     bool is_alternative;
 
-    string date_added;
     string expire_date;
 };
 
@@ -47,15 +46,4 @@ public:
     double price;
     int quantity;
 };
-
-
-class invoice{
-public:
-    string name;
-    string quantity;
-    string date;
-    string time;
-};
-
-
 #endif // CLASS_DEFINITIONS_H

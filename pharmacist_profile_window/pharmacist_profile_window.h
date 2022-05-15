@@ -18,6 +18,8 @@ public:
 private slots:
     void on_save_clicked();
 
+    void on_save_2_clicked();
+
 private:
     Ui::pharmacist_profile_window *ui;
 };

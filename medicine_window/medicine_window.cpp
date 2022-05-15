@@ -47,16 +47,6 @@ void Medicine_Window::on_back_clicked()
     launch_new_window(GUI_Admin_Panel_Window, this);
 }
 
-
-string  convert_date_form(string date_form){
-    string day, month, year;
-    day = date_form[0] + date_form[1];
-    month = date_form[3] + date_form[4];
-    year = date_form[6] + date_form[7] + date_form[8] + date_form[9];
-
-    return (year + "-" + month + "-" + day);
-}
-
 void Medicine_Window::on_add_medicine_clicked()
 {
     Medicine md;
@@ -67,8 +57,7 @@ void Medicine_Window::on_add_medicine_clicked()
     md.sell_price = ui->md_sell_price->value();
     md.category = ui->md_category->currentText().toStdString();
     md.supplier_company = ui->md_suppliers->currentText().toStdString();
-    md.expire_date = convert_date_form(ui->ex_date->date().toString("dd/MM/yyyy").toStdString());
-    md.date_added = md.expire_date;
+    md.expire_date = ui->ex_date->date().toString("dd/MM/yyyy").toStdString();
 
     string operation_result = insert_medicine(md);
     ui->msg->setText(QString::fromStdString(operation_result));
@@ -123,7 +112,7 @@ void Medicine_Window::on_remove_selected_clicked()
 
         if (ui->shortage_table->item(i,0)->isSelected()){
 
-            operation_result = delete_medicine(meds_list[i].id);
+            operation_result = delete_medicine_by_name(ui->shortage_table->item(i,1)->text().toStdString());
             ui->msg->setText(QString::fromStdString(operation_result));
             on_show_all_stock_clicked();
             return;

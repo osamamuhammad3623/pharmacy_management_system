@@ -4,6 +4,10 @@
 #include "navigation.h"
 #include "QMessageBox"
 
+#define     NOT_VALID_CREDENTIALS   -1
+#define     PHARMACIST_CREDENTIALS  0
+#define     ADMIN_CREDENTIALS       0
+
 /* database connection */
 extern sqlite3* db;
 

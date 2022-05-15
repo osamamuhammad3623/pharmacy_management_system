@@ -192,7 +192,7 @@ string remove_pharmacist(string id) {
 
 int is_admin(string user_name, string pass)
 {
-    int  is_admin =-1;
+    int  is_admin =NOT_VALID_CREDENTIALS;
 
     sqlite3_stmt* stmt;
     string query = "SELECT Is_admin FROM PHARMACIST WHERE Username = '" + user_name + "' AND Password = '"+pass+"'";
@@ -201,7 +201,6 @@ int is_admin(string user_name, string pass)
          is_admin = sqlite3_column_int(stmt, 0);
     sqlite3_close(db); return is_admin;
 }
-
 
 vector<Medicine> get_alternatives(string name) {
     vector<Medicine> v;
@@ -250,7 +249,6 @@ string update_medicine(string name, int quantity) {
     sqlite3_close(db); return "success";
 }
 
-
 string delete_medicine_by_name(string name)
 {
     string query = "DELETE FROM MEDICINE WHERE Name ='" + name + "'";
@@ -258,7 +256,6 @@ string delete_medicine_by_name(string name)
     sqlite3_close(db); return "Medicine is deleted successfully";
 
 }
-
 
 string delete_medicine(string id)
 {
@@ -402,5 +399,4 @@ Pharmacist get_pharmacist(string username) {
     p.is_admin = sqlite3_column_int(stmt, 6);
 
     sqlite3_close(db); return p;
-
 }

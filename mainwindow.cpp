@@ -20,16 +20,18 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_login_clicked()
-{
+void MainWindow::on_login_clicked(){
 
+    // check if user entered a valid credentials
     int result = is_admin(ui->username->text().toStdString(), ui->password->text().toStdString());
 
-    if (result == 1){
+    if (result == ADMIN_CREDENTIALS){
         launch_new_window(GUI_Admin_Panel_Window, this);
-    }else if (result == 0){
+
+    }else if (result == PHARMACIST_CREDENTIALS){
         ph_username= ui->username->text().toStdString();
         launch_new_window(GUI_Pharmacist_Window, this);
+
     }else{
         ui->msg->setText("Username is not found!");
     }

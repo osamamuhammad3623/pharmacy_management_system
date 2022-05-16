@@ -52,33 +52,27 @@ vector<Supplier> get_suppliers() {
 }
 
 string insert_medicine(Medicine md){
+    // check that ID is unique
     sqlite3_stmt* stmt;
     string qu = "SELECT ID From MEDICINE";
     sqlite3_prepare_v2(db, qu.c_str(), -1, &stmt, NULL);
-    vector<string> ii;
-
+    string current_id;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        ii.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
-    }
-    for (int i = 0; i < ii.size(); i++) {
-        if (md.id == ii[i]) {
+        current_id = (string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+        if (md.id == current_id) {
             sqlite3_close(db); return "ID is already used..Please Enter another ID";
         }
     }
 
+    // check that name is unique
     string q = "SELECT Name From MEDICINE";
     sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
-    vector<string> us;
+    string current_name;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        us.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
-    }
-    for (int i = 0; i < us.size(); i++) {
-        if (md.name == us[i]) {
-            sqlite3_close(db); return "Medicine is already in the stock!!"; // Medicine is already exists!!
+        current_name = (string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+        if (md.name == current_name) {
+            sqlite3_close(db); return "Name is already used..Please Enter another name";
         }
-    }
-    if (md.quantity <= 0 || md.purchase_price <=0 || md.sell_price <=0 ) {
-        sqlite3_close(db); return "Please Enter valid numbers";
     }
 
     string query = "INSERT INTO MEDICINE(ID,Name,Quantity,Sell,Purchase,Category,Expiry_date,Supplier) VALUES(?,?,?,?,?,?,?,?);";
@@ -97,30 +91,29 @@ string insert_medicine(Medicine md){
 }
 
 string insert_pharmacist(Pharmacist ph) {
+    // check that ID is unique
     sqlite3_stmt* stmt;
     string qu = "SELECT ID From PHARMACIST";
     sqlite3_prepare_v2(db, qu.c_str(), -1, &stmt, NULL);
-    vector<string> ii;
+    string _id;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        ii.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
-    }
-    for (int i = 0; i < ii.size(); i++) {
-        if (ph.id == ii[i]) {
-            sqlite3_close(db); return "ID is already used..Please Enter another ID"; // ID is already used..Please Enter another ID
+        _id = (string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+        if (ph.id == _id){
+            sqlite3_close(db); return "ID is already used..Please Enter another ID";
         }
     }
 
+    // check that username is unique
     string q = "SELECT Username From PHARMACIST";
     sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
-    vector<string> us;
+    string _username;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        us.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
-    }
-    for (int i = 0; i < us.size(); i++) {
-        if (ph.username == us[i]) {
-            sqlite3_close(db); return "Username is already used..Please enter another Username"; // "Username is already used..Please enter another Username"
+        _username = (string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+        if (ph.username == _username) {
+            sqlite3_close(db); return "Username is already used..Please enter another Username";
         }
     }
+
 
     string query = "INSERT INTO PHARMACIST(ID,FName,LName,Username,Password,Salary,Is_admin) VALUES(?,?,?,?,?,?,?);";
     sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
@@ -139,16 +132,15 @@ string insert_pharmacist(Pharmacist ph) {
 }
 
 string insert_supplier(Supplier sup) {
+    // check that ID is unique
     sqlite3_stmt* stmt;
     string qu = "SELECT ID From SUPPLIER";
     sqlite3_prepare_v2(db, qu.c_str(), -1, &stmt, NULL);
-    vector<string> ii;
+    string _id;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        ii.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
-    }
-    for (int i = 0; i < ii.size(); i++) {
-        if (sup.id == ii[i]) {
-            sqlite3_close(db); return " ID is already used..Please Enter another ID"; // ID is already used..Please Enter another ID
+        _id = (string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+        if (sup.id == _id) {
+            sqlite3_close(db); return " ID is already used..Please Enter another ID";
         }
     }
 
@@ -164,29 +156,21 @@ string insert_supplier(Supplier sup) {
 }
 
 string remove_pharmacist(string id) {
-    vector<string>v;
-    bool x = false;
     sqlite3_stmt* stmt;
-
     string q = "SELECT ID FROM PHARMACIST";
     sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
+    string current_id;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        v.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
+        current_id = (string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
 
-    }
-    for (int i = 0; i < v.size(); i++) {
-        if (v[i] == id) {
-            x = true;
+        if (current_id == id){
+            string query = "DELETE FROM PHARMACIST WHERE ID ='" + id + "'";
+                  sqlite3_exec(db, query.c_str(), NULL, 0, NULL);
+                  sqlite3_close(db); return "Pharmacist is deleted successfully";
         }
     }
-    if (x == true) {
-        string query = "DELETE FROM PHARMACIST WHERE ID ='" + id + "'";
-              sqlite3_exec(db, query.c_str(), NULL, 0, NULL);
-              sqlite3_close(db); return "Pharmacist is deleted successfully";
-    }
-    else {
-        sqlite3_close(db); return "Not found pharmacist with this ID";
-    }
+
+    sqlite3_close(db); return "Not found pharmacist with this ID";
 
 }
 
@@ -204,17 +188,15 @@ int is_admin(string user_name, string pass)
 
 vector<Medicine> get_alternatives(string name) {
     vector<Medicine> v;
-    int x;
-    const unsigned char* c;
+    const unsigned char* cat;
     string str;
     sqlite3_stmt* stmt;
 
-    string query = "SELECT Quantity,Category FROM MEDICINE WHERE Name = '" + name + "'";
+    string query = "SELECT Category FROM MEDICINE WHERE Name = '" + name + "'";
     sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
     sqlite3_step(stmt);
-    x = sqlite3_column_int(stmt, 0);
-    c = sqlite3_column_text(stmt, 1);
-    str = std::string(reinterpret_cast<const char*>(c));
+    cat = sqlite3_column_text(stmt, 0);
+    str = std::string(reinterpret_cast<const char*>(cat));
 
     query = "SELECT ID,Name,Quantity,Sell FROM MEDICINE WHERE Category = '" + str + "' AND Quantity !=0";
     sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, NULL);
@@ -259,58 +241,16 @@ string delete_medicine_by_name(string name)
 
 string delete_medicine(string id)
 {
-    vector<string>v;
-    bool x = false;
-    char* err;
-    sqlite3_stmt* stmt;
-
-    string q = "SELECT ID FROM MEDICINE";
-    sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
-    while (sqlite3_step(stmt) == SQLITE_ROW) {
-        v.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
-
-    }
-    for (int i = 0; i < v.size(); i++) {
-        if (v[i] == id) {
-            x = true;
-        }
-    }
-    if (x == true) {
-        string query = "DELETE FROM MEDICINE WHERE ID ='" + id + "'";
-        sqlite3_exec(db, query.c_str(), NULL, 0, &err);
-        sqlite3_close(db); return "Medicine is deleted successfully";
-    }
-    else {
-        sqlite3_close(db); return "Not found medicine with this ID";
-    }
+    string query = "DELETE FROM MEDICINE WHERE ID ='" + id + "'";
+    sqlite3_exec(db, query.c_str(), NULL, 0, 0);
+    sqlite3_close(db); return "Medicine is deleted successfully";
 }
 
 string delete_supplier(string id)
 {
-    vector<string>v;
-    bool x = false;
-
-    sqlite3_stmt* stmt;
-
-    string q = "SELECT ID FROM SUPPLIER";
-    sqlite3_prepare_v2(db, q.c_str(), -1, &stmt, NULL);
-    while (sqlite3_step(stmt) == SQLITE_ROW) {
-        v.push_back(string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0))));
-
-    }
-    for (int i = 0; i < v.size(); i++) {
-        if (v[i] == id) {
-            x = true;
-        }
-    }
-    if (x == true) {
-        string query = "DELETE FROM SUPPLIER WHERE ID ='" + id + "'";
-        sqlite3_exec(db, query.c_str(), NULL, 0, NULL);
-        sqlite3_close(db); return "Supplier is deleted successfully";
-    }
-    else {
-        sqlite3_close(db); return "Not found supplier with this ID";
-    }
+    string query = "DELETE FROM SUPPLIER WHERE ID ='" + id + "'";
+    sqlite3_exec(db, query.c_str(), NULL, 0, NULL);
+    sqlite3_close(db); return "Supplier is deleted successfully";
 }
 
 string update_pharmacist_profile(Pharmacist p) {

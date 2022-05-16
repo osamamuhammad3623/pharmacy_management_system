@@ -21,8 +21,16 @@ public:
     void show_available_medicines();
 
 private slots:
+    /**
+    * A function to sell a medicine, it checks if the medicine is available,
+    *       if available, update it quantity in database,
+    *       if not, show an error message
+    */
     void on_add_medicine_clicked();
 
+    /**
+    * A function to navigate to pharmacist profile window to display/edit some info
+    */
     void on_edit_clicked();
 
     void on_check_price_clicked();

@@ -17,6 +17,11 @@ public:
 
 private slots:
 
+    /**
+    * A function to add/update a supplier in the database,
+    *               display operation message,
+    *               update suppliers table
+    */
     void on_add_sup_clicked();
 
     /**

@@ -449,6 +449,21 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>emp_id</tabstop>
+  <tabstop>emp_fname</tabstop>
+  <tabstop>emp_lname</tabstop>
+  <tabstop>emp_username</tabstop>
+  <tabstop>emp_password</tabstop>
+  <tabstop>emp_salary</tabstop>
+  <tabstop>is_admin</tabstop>
+  <tabstop>add_emp</tabstop>
+  <tabstop>refresh_pharmacist_table</tabstop>
+  <tabstop>remove_selected_row</tabstop>
+  <tabstop>edit_ph</tabstop>
+  <tabstop>back</tabstop>
+  <tabstop>pharmacist_table</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

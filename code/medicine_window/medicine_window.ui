@@ -67,7 +67,7 @@
     <number>1</number>
    </property>
    <property name="maximum">
-    <number>200</number>
+    <number>10000000</number>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -106,7 +106,7 @@
     <number>1</number>
    </property>
    <property name="maximum">
-    <number>200</number>
+    <number>10000000</number>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -181,7 +181,7 @@
     <number>1</number>
    </property>
    <property name="maximum">
-    <number>200</number>
+    <number>10000000</number>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">

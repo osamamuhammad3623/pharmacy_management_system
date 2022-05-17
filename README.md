@@ -10,6 +10,9 @@
 - Admin can manage (add/update/delete) medicines, users and suppliers.
 - Pharmacists can edit some of their profile info such as username & password, but they can't edit their salary :D.
 - Users can check availability and prices of medicines giving their names.
+
+## Documentation
+
 ## Tools
 - Languages: C/C++, SQL for database.
 - IDEs: Qt Creator.

@@ -12,10 +12,10 @@
 - Users can check availability and prices of medicines giving their names.
 
 ## Documentations
-### SRS
-### Analysis & Design diagrams
-### Database schema & diagram
-### User Guide
+- SRS
+- Analysis & Design diagrams
+- Database schema & diagram
+- User Guide
 
 ## Tools
 - Languages: C/C++, SQL for database.

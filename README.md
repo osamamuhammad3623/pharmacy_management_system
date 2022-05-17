@@ -11,7 +11,11 @@
 - Pharmacists can edit some of their profile info such as username & password, but they can't edit their salary :D.
 - Users can check availability and prices of medicines giving their names.
 
-## Documentation
+## Documentations
+### SRS
+### Analysis & Design diagrams
+### Database schema & diagram
+### User Guide
 
 ## Tools
 - Languages: C/C++, SQL for database.

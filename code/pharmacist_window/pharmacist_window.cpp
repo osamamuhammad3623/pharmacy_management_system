@@ -71,7 +71,7 @@ void Pharmacist_window::on_check_price_clicked()
         msg.setText("Price: " + QString::fromStdString(to_string(p)));
     }
     msg.setIcon(QMessageBox::Information);
-    msg.setWindowTitle("Check availability");
+    msg.setWindowTitle("Check Price");
     msg.exec();
 
 }
